@@ -1,6 +1,7 @@
 <template>
+  <h1>Todo List</h1>
   <div class="hello">
-    <input type="text" v-model="todo"/>
+    <input type="text" v-model="todo" placeholder="Nova tarefa"/>
     <button @click="salvar()">Salvar</button>
   </div>
   <div>
@@ -30,6 +31,7 @@ export default {
     },
  
     deleteItem(index) {
+      this.list.splice(index)
       console.log(index)
     }
   }
@@ -38,18 +40,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+h1 {
+  margin-bottom: 50px;
 }
 ul {
   list-style-type: none;
   padding: 0;
 }
 li {
-  display: inline-block;
+  display: list-item;
   margin: 0 10px;
 }
-a {
-  color: #42b983;
+
+button {
+  background-color: aqua;
 }
 </style>

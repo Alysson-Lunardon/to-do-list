@@ -5,9 +5,17 @@
     <button @click="salvar()">Salvar</button>
   </div>
   <div>
+    <h1>Não Completa</h1>
     <ul>
       <li v-for="(item, index) in list" :key="index">
-        {{ item }} <button @click="deleteItem(index)">X</button>
+        {{ item }} <button @click="deleteItem(index,item)">X</button>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h1>Completas</h1>
+    <ul>
+      <li v-for="(item, index) in todoCompleta" :key="index"> {{ item }}
       </li>
     </ul>
   </div>
@@ -20,7 +28,8 @@ export default {
   data() {
     return {
       todo: "",
-      list: []
+      list: [],
+      todoCompleta: []
     }
   },
 
@@ -30,10 +39,13 @@ export default {
       console.log("salvei", this.todo);
     },
  
-    deleteItem(index) {
-      this.list.splice(index)
+    deleteItem(index,item) {
+      this.list.splice(index,1)
+      this.todoCompleta.push(item)
       console.log(index)
     }
+
+
   }
 }
 </script>
